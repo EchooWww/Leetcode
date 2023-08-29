@@ -16,8 +16,6 @@ class Solution {
                 }
             }
         }
-        List<List<Integer>> res = new ArrayList<>();
-        res.addAll(combos);
-        return res;
+        return new ArrayList(combos);
     }
 }
