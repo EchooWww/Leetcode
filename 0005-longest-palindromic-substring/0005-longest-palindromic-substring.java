@@ -2,18 +2,17 @@ class Solution {
     public String longestPalindrome(String s) {
         String longest = "";
         for(int i = 0; i < s.length(); i++) {
-            // consider the substring be centered with 1 or 2 characters
-            String odd = findPalindrome(s, i, i);
-            String even = findPalindrome(s, i, i+1);
-            longest = odd.length() > longest.length()? odd:longest;
-            longest = even.length() > longest.length()? even:longest;
+            String s1 = findPalindrome(s, i, i);
+            String s2 = findPalindrome(s, i, i+1);
+            longest = s1.length()>longest.length()? s1:longest;
+            longest = s2.length()>longest.length()? s2:longest;
         }
         return longest;
+        
     }
     
-    // for each center, find the longest palindromic substring
     public String findPalindrome(String s, int l, int r) {
-        while(l >= 0 && r < s.length() && s.charAt(l) == s.charAt(r)) {
+        while(l >= 0 && r < s.length()&& s.charAt(l)==s.charAt(r) ) {
             l--;
             r++;
         }
