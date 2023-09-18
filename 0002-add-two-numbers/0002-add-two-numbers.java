@@ -13,20 +13,28 @@ class Solution {
         ListNode p1 = l1, p2 = l2;
         ListNode dummy = new ListNode(-1), p = dummy;
         int carry = 0;
+
+        // As long as there's value in p1, p2, or carry, we should continue the loop
         while (p1!= null || p2!= null || carry > 0) {
-            int n = p1 != null && p2 != null? p1.val + p2.val: p1 == null && p2 == null? 0 : p1 == null ? p2.val : p1.val;
+            int n = 0;
+            if (p1 != null) {
+                n += p1.val;
+                p1 = p1.next;
+            }
+            if (p2 != null) {
+                n += p2.val;
+                p2 = p2.next;
+            }
             if (carry > 0) {
                  n += carry;
                  carry = 0;
             }
-            while (n >= 10) {
-                carry++;
-                n -= 10;
+            if (n >= 10) {
+                carry += n / 10;
+                n %= 10;
             }
             p.next = new ListNode(n);
             p = p.next;
-            if (p1 != null) p1 = p1.next;
-            if (p2 != null) p2 = p2.next;
         }
         return dummy.next;
     }
