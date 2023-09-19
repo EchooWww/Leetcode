@@ -6,7 +6,6 @@ class Solution {
 
     public List<List<Integer>> nSumTarget(int[] nums, int n, int start, long target) {
         List<List<Integer>> res = new ArrayList<>();
-        if (n < 2 || n > nums.length) return res;
         if (n == 2) {
             int l = start, r = nums.length - 1;
             while (l < r) {
