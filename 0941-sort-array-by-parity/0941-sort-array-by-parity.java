@@ -9,6 +9,7 @@ class Solution {
                 l++;
             }
         }
+        System.gc();
         return nums;
     }
 }
