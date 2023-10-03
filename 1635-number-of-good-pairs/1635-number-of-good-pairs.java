@@ -1,10 +1,10 @@
 class Solution {
     public int numIdenticalPairs(int[] nums) {
-        int pairs = 0, n = nums.length;
-        for (int i = 0; i < n; i++) {
-            for (int j = i + 1; j < n ; j++) {
-                if (nums[i]==nums[j]) pairs++;
-            }
+        int pairs = 0;
+        HashMap<Integer, Integer> freq = new HashMap<>();
+        for (int n: nums) freq.put(n, freq.getOrDefault(n, 0) + 1);
+        for (int k: freq.values()) {
+            if (k >= 2) pairs += k*(k-1)/2;
         }
         return pairs;
     }
