@@ -7,6 +7,7 @@ class Solution {
     }
 
     int dp (int[] cost, int n) {
+        if (n < 0) return 0;
         if (memo[n] != 0) return memo[n];
         if (n <= 1) {
             memo[n] = cost[n];
