@@ -5,16 +5,16 @@
  *     struct ListNode *next;
  * };
  */
-bool hasCycle(struct ListNode *head) {
-    struct ListNode *slow = head;
-    struct ListNode *fast = head;
 
-    while(fast != NULL && fast->next != NULL) {
-        slow = slow->next;
-        fast = fast->next->next;
-        if (fast == slow) {
-            return true;
-        }
-    }
-    return false;
+bool hasCycleRecursive (struct ListNode *slow, struct ListNode *fast) {
+    if (fast == NULL || fast->next == NULL)  return false;
+    slow = slow->next;
+    fast = fast->next->next;
+    if (fast == slow) return true;
+    return hasCycleRecursive(slow, fast);
+}
+
+bool hasCycle(struct ListNode *head) {
+    if (head == NULL) return false;
+    return hasCycleRecursive(head, head);
 }
