@@ -16,7 +16,7 @@ class Solution {
                     start = left;
                     minLen = right - left;
                 }
-                if (remain[s.charAt(left)] == 0) {
+                if (remain[s.charAt(left)] >= 0) {
                     valid--;
                 }
                 remain[s.charAt(left)]++;
