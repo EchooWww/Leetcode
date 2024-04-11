@@ -1,7 +1,6 @@
 class Solution {
     public String removeKdigits(String num, int k) {
         int resLen = num.length() - k;
-        if (num.length() == k) return "0";
         Stack<Character> digits = new Stack<>();
         StringBuilder res = new StringBuilder();
         for (char digit: num.toCharArray()) {
@@ -11,9 +10,9 @@ class Solution {
             }
             digits.push(digit);
         }
-        Stack<Character> auxiliry= new Stack<>();
-        while (!digits.isEmpty()) auxiliry.push(digits.pop());
-        while (!auxiliry.isEmpty()) res.append(auxiliry.pop());
-        return res.toString().substring(0, resLen).replaceFirst("^0+(?!$)", "");
+        while (!digits.isEmpty()) res.insert(0, digits.pop());
+        int i = 0;
+        while (i < resLen && res.charAt(i) == '0') i++;
+        return i == resLen? "0" : res.toString().substring(i, resLen);
     }
 }
