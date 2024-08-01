@@ -1,10 +1,7 @@
 class Solution {
     public int countSeniors(String[] details) {
-        int count = 0;
-        for (String detail:details) {
-            int age = Integer.valueOf(detail.substring(11,13));
-            if (age > 60) count++;
-        }
-        return count;
+        return (int)Arrays.stream(details)
+        .filter(detail -> Integer.valueOf(detail.substring(11,13))>60)
+        .count();
     }
 }
