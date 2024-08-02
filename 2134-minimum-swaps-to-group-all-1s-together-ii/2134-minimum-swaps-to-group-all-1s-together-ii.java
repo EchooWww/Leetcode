@@ -7,7 +7,7 @@ class Solution {
         for (int i = 0; i < cnt1; i++) currCnt += nums[i];
         int maxCnt = currCnt;
         for (int j = cnt1; j < arrSize + cnt1 - 1; j++) {
-            currCnt += (nums[j%arrSize] - nums[j-cnt1+1]);
+            currCnt += (nums[j%arrSize] - nums[j-cnt1]);
             maxCnt = Math.max(maxCnt, currCnt);
         }
         return cnt1 - maxCnt;
