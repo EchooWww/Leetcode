@@ -4,13 +4,12 @@ class Solution:
         path = []
         n = len(nums)
         def dfs(i):
-            if i == n:
-                ans.append(path[:])
-            else:
-                dfs (i+1)
-                
-                path.append(nums[i])
-                dfs (i+1)
-                path.remove(nums[i])
+            ans.append(path[:])
+            if i == n: 
+                return
+            for j in range (i, n):
+                path.append(nums[j])
+                dfs(j+1)
+                path.remove(nums[j])
         dfs(0)
         return ans
