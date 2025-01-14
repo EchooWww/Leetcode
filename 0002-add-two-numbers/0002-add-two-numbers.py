@@ -9,13 +9,12 @@ class Solution:
         dummy = ListNode(-1)
         l = dummy
         while l1 != None or l2 != None:
-            l.next = ListNode(carry)
-            l = l.next
             sum = (l1.val if l1 else 0) + (l2.val if l2 else 0) + carry
-            l.val = sum % 10
             carry = sum // 10
             l1 = l1.next if l1 else None
             l2 = l2.next if l2 else None
+            l.next = ListNode(sum%10)
+            l = l.next
         if carry == 1:
             l.next = ListNode(1)
         return dummy.next
